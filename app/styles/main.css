@@ -1,0 +1,280 @@
+
+@font-face {
+  font-family: 'VAGRoundedStd-Black';
+  src: url('fonts/VAGRoundedStd-Black.eot?#iefix') format('embedded-opentype'),  url('fonts/VAGRoundedStd-Black.otf')  format('opentype'),
+  url('fonts/VAGRoundedStd-Black.woff') format('woff'), url('fonts/VAGRoundedStd-Black.ttf')  format('truetype'), url('fonts/VAGRoundedStd-Black.svg#VAGRoundedStd-Black') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'VAGRoundedStd-Bold';
+  src: url('fonts/VAGRoundedStd-Bold.eot?#iefix') format('embedded-opentype'),  url('fonts/VAGRoundedStd-Bold.otf')  format('opentype'),
+  url('fonts/VAGRoundedStd-Bold.woff') format('woff'), url('fonts/VAGRoundedStd-Bold.ttf')  format('truetype'), url('fonts/VAGRoundedStd-Bold.svg#VAGRoundedStd-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'VAGRoundedStd-Light';
+  src: url('fonts/VAGRoundedStd-Light.eot?#iefix') format('embedded-opentype'),  url('fonts/VAGRoundedStd-Light.otf')  format('opentype'),
+  url('fonts/VAGRoundedStd-Light.woff') format('woff'), url('fonts/VAGRoundedStd-Light.ttf')  format('truetype'), url('fonts/VAGRoundedStd-Light.svg#VAGRoundedStd-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/**** menu superior ****/
+.navbar {
+  font-family: VAGRoundedStd-Black;
+}
+.navbar-default .navbar-nav li a {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav li a:hover,
+.navbar-default .navbar-nav li a:active,
+.navbar-default .navbar-nav li a:visited,
+.navbar-default .navbar-nav li a:focus {
+  color: #dddddd;
+}
+.navbar-default {
+  background-color: rgba(5,4,4,0.7);
+  border-color: #000;
+}
+/************************
+
+/*************************/
+/***  filtros  **********/
+
+.menu-filtros li {
+  font-family: VAGRoundedStd-Bold;
+  display: inline-block;
+  color: #B5B5B5;
+}
+.menu-filtros img {
+  width: 30px;
+  height: auto;
+}
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+
+body .mc-cycle {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+.table140 {display:table;height:180px;width: 100%;}
+.cellcenter {display:table-cell;vertical-align: middle;}
+#timeline {
+  margin-top: 2em;
+}
+
+#timeline .hitos {
+  margin-top:1em;
+}
+#timeline .hitos li {
+  list-style: none;
+}
+
+#timeline .container {
+  height: 480px;
+  overflow: auto;
+}
+#timeline .hitos li {
+  height:180px;
+}
+#timeline .container .hito .imagen{
+  width: 140px;
+  height: 140px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+}
+#timeline .container .hito .imagen{
+  background-size: cover;
+  display: block;
+  background-repeat:  no-repeat;
+  background-position: center;
+}
+#timeline .container .hito {
+  font-family: "VAG Rounded Std Light";
+}
+.bold {
+  font-family: "VAGRoundedStd-Bold";
+}
+/*animacion*/
+.los-hitos-animation.ng-enter,
+.los-hitos-animation.ng-leave,
+.los-hitos-animation.ng-move {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+  position:relative;
+}
+
+.los-hitos-animation.even.ng-enter {
+  left:-10px;
+  opacity:0;
+}
+.los-hitos-animation.odd.ng-enter {
+  left:10px;
+  opacity:0;
+}
+.los-hitos-animation.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.los-hitos-animation.ng-leave {
+  left:0;
+  opacity:1;
+}
+.los-hitos-animation.ng-leave.even.ng-leave-active {
+  left:-10px;
+  opacity:0;
+}
+.los-hitos-animation.ng-leave.odd.ng-leave-active {
+  left:10px;
+  opacity:0;
+}
+
+.los-hitos-animation.ng-move {
+  opacity:0.5;
+}
+.los-hitos-animation.ng-move.ng-move-active {
+  opacity:1;
+}
+.menu-filtros li {
+  text-align: center;
+  width: 100px;
+  vertical-align: top;
+}
+.menu-filtros li span {
+  width:100%;
+  display:block;
+  padding-top:5px;
+  white-space: normal;
+}
+#timeline .titulo {
+  text-align: right;
+  font-size: 16px;
+  padding-left: 40px;
+}
+#timeline .dia {
+  font-size: 16px;
+  text-align: center;
+  font-family: "VAGRoundedStd-Bold";
+}
+#timeline .even {
+  background-image: url(../images/timeline/linea2.png);
+  background-position: 43%;
+  background-repeat: no-repeat;
+}
+#timeline .odd {
+  background-image: url(../images/timeline/linea.png);
+  background-position: 35.3%;
+  background-repeat: no-repeat;
+}
+#timeline .dia span {
+  padding: 21px;
+  background-size: 48px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
+}
+#timeline .dia span {
+  background-image: url(../images/timeline/todos.png);
+}
+#timeline .dia span.Gestion {
+  background-image: url(../images/timeline/gestion.png);
+}
+#timeline .dia span.Promesas {
+  background-image: url(../images/timeline/promesas.png);
+}
+#timeline .dia span.Economica {
+  background-image: url(../images/timeline/eeconomica.png);
+}
+#timeline .dia span.Sanitaria {
+  background-image: url(../images/timeline/esanitaria.png);
+}
+#timeline .dia span.Seguridad {
+  background-image: url(../images/timeline/seguridad.png);
+}
+#timeline .dia span.Despidos {
+  background-image: url(../images/timeline/despidos.png);
+}
+#timeline .descripcion {
+  color: #949597;
+  font-size: 12px;
+}
+#timeline .fecha {
+  color: #C7C7C7;
+  font-size: 18px;
+}
+
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

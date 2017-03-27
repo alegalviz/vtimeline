@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'VAGRoundedStd-Bold';
+  src: url('fonts/VAGRoundedStd-Bold.eot?#iefix') format('embedded-opentype'),  url('fonts/VAGRoundedStd-Bold.otf')  format('opentype'),
+	     url('fonts/VAGRoundedStd-Bold.woff') format('woff'), url('fonts/VAGRoundedStd-Bold.ttf')  format('truetype'), url('fonts/VAGRoundedStd-Bold.svg#VAGRoundedStd-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

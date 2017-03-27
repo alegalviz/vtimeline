@@ -1,0 +1,64 @@
+<div id="timeline" ng-if="hitos">
+    <ul class="menu-filtros">
+        <li class="filtro1 btn"><img src="images/timeline/claves.png" />
+            <span ng-click="miFiltro={destacado: 'filtro 1'}" class="btn">filtro 1</span>
+        </li>
+        <li class="filtro1 btn" ng-click="miFiltro={categoria: 'filtro1'}">
+          <img src="images/timeline/claves.png" /><span>filtro 1</span>
+        </li>
+        <li class="filtro2 btn" ng-click="miFiltro={categoria: 'filtro2'}">
+          <img src="images/timeline/claves.png" /><span>filtro 1</span>
+        </li>
+        <li class="filtro3 btn" ng-click="miFiltro={categoria: 'filtro2'}" >
+          <img src="images/timeline/claves.png" /><span>filtro 1</span>
+        </li>
+        <li class="filtro4 btn" ng-click="miFiltro={categoria: 'filtro2'}">
+          <img src="images/timeline/seguridad.png" /><span>filtro 1</span>
+        </li>
+        <li class="filtro5 btn" ng-click="miFiltro={categoria: 'filtro2'}"><img
+                src="images/timeline/promesas.png" /><span>filtro 1</span></li>
+        <li class="filtro16 btn" ng-click="miFiltro={categoria: 'filtro2'}"><img
+                src="images/timeline/gestion.png" /><span>filtro 1&oacute;n</span></li>
+        <li class="todos btn" ng-click="miFiltro={}"><img src="images/timeline/todos.png" /><span>Todos
+        </span></li>
+    </ul>
+    <!--<ul class="meses">
+      <li class="diciembre"><span ng-click="filtroPorMes(12)" class="btn">Diciembre</span></li>
+      <li class="enero"><span ng-click="filtroPorMes(1)" class="btn">Enero</span></li>
+    </ul>-->
+    <div class="container">
+        <div>
+            <ul class="hitos">
+                <li ng-repeat="hito in hitos |filter:miFiltro|filter:filtroPorMes|filter:emptyFilter"
+                    ng-class="$even ? 'even' : 'odd col-md-offset-1'" class="los-hitos-animation col-md-11">
+                    <div  ng-model="hito" class="hito col-md-12">
+                        <div class="imagen col-md-4"
+                             style="background-image: url('images/notas/{{hito.foto}}.jpg');"></div>
+                        <div class="titulo bold col-md-3">
+                            <div class="table140">
+                                <div class="cellcenter">
+                                    {{hito.titulo}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dia col-md-1">
+                            <div class="table140">
+                                <div class="cellcenter">
+                                    <span class="{{hito.categoria}}">{{hito.dia}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cuerpo col-md-5">
+                            <div class="table140">
+                                <div class="cellcenter">
+                                    <div class="fecha bold col-md-5">{{hito.fecha | fechaFormato}}</div>
+                                    <div class="descripcion col-md-12" ng-bind-html="hito.descripcion"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
