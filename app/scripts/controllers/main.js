@@ -32,7 +32,7 @@ vtimelineApp.factory('hitosRepository', function($http) {
   return {
     getAllHitos: function() {
 
-        var url = 'json/data.json';
+        var url = 'json/puhal-v2.json';
         return $http.get(url);
 
     }
