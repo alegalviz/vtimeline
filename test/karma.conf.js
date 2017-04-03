@@ -31,9 +31,12 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/pym.js/dist/pym.js',
       'bower_components/angular-scroll/angular-scroll.js',
+      'bower_components/angular-filter/dist/angular-filter.js',
       'bower_components/scrollreveal/dist/scrollreveal.js',
       'bower_components/jquery-cycle/jquery.cycle.all.js',
       'bower_components/maximage/lib/js/jquery.maximage.js',
+      'bower_components/moment/moment.js',
+      'bower_components/angular-moment/angular-moment.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

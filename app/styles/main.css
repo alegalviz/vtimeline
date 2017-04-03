@@ -37,6 +37,7 @@ body {
 /**** menu superior ****/
 .navbar {
   font-family: VAGRoundedStd-Black;
+  margin: 0;
 }
 .navbar-default .navbar-nav li a {
   color: #ffffff;
@@ -124,23 +125,26 @@ body .mc-cycle {
   overflow: auto;
 }
 #timeline .hitos li {
-  height:180px;
+  min-height: 180px;
+  margin-bottom: 1em;
 }
 #timeline .container .hito .imagen{
   width: 140px;
   height: 140px;
-  border-radius: 150px;
-  -webkit-border-radius: 150px;
-  -moz-border-radius: 150px;
 }
 #timeline .container .hito .imagen{
   background-size: cover;
   display: block;
   background-repeat:  no-repeat;
   background-position: center;
+  float: none;
 }
 #timeline .container .hito {
   font-family: "VAG Rounded Std Light";
+  display: flex;
+}
+#timeline .container .even .hito {
+  flex-direction: row-reverse;
 }
 .bold {
   font-family: "VAGRoundedStd-Bold";
@@ -149,7 +153,6 @@ body .mc-cycle {
 .los-hitos-animation.ng-enter,
 .los-hitos-animation.ng-leave,
 .los-hitos-animation.ng-move {
-  -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all;
   position:relative;
 }
@@ -201,6 +204,7 @@ body .mc-cycle {
   text-align: right;
   font-size: 16px;
   padding-left: 40px;
+  float: none;
 }
 #timeline .dia {
   font-size: 16px;
@@ -208,17 +212,76 @@ body .mc-cycle {
   font-family: "VAGRoundedStd-Bold";
 }
 #timeline .even {
-  background-image: url(../images/timeline/linea2.png);
-  background-position: 43%;
+  /*background-image: url(../images/timeline/linea2.png);
+  background-position: 43%;*/
   background-repeat: no-repeat;
 }
 #timeline .odd {
-  background-image: url(../images/timeline/linea.png);
-  background-position: 35.3%;
+  /*background-image: url(../images/timeline/linea.png);
+   background-position: 35.3%;*/
   background-repeat: no-repeat;
 }
+.cellcenter span {
+  position: relative;
+}
+.even .cellcenter span:after {
+  content: '';
+  position: absolute;
+  bottom: -80%;
+  height: 80px;
+  width: 3px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#adadad+0,000000+100&0.65+0,0+100 */
+  background: -moz-linear-gradient(top, rgba(173,173,173,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(173,173,173,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(173,173,173,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6adadad', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  left: 0;
+  transform: rotateZ(45deg);
+}
+.odd .cellcenter span:after {
+  content: '';
+  position: absolute;
+  bottom: -80%;
+  height: 80px;
+  width: 3px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#adadad+0,000000+100&0.65+0,0+100 */
+  background: -moz-linear-gradient(top, rgba(173,173,173,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(173,173,173,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(173,173,173,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6adadad', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  left: 100%;
+  transform: rotateZ(-45deg);
+}
+.even .cellcenter span:before {
+  content: '';
+  position: absolute;
+  top: -80%;
+  height: 80px;
+  width: 3px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,adadad+100&0+0,0.65+100 */
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(173,173,173,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(173,173,173,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(173,173,173,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6adadad',GradientType=0 ); /* IE6-9 */
+  left: 0;
+  transform: rotateZ(-45deg);
+}
+.odd .cellcenter span:before {
+  content: '';
+  position: absolute;
+  top: -80%;
+  height: 80px;
+  width: 3px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,adadad+100&0+0,0.65+100 */
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(173,173,173,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(173,173,173,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(173,173,173,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6adadad',GradientType=0 ); /* IE6-9 */
+  left: 100%;
+  transform: rotateZ(45deg);
+}
 #timeline .dia span {
-  padding: 21px;
+  padding: 25px;
   background-size: 48px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -259,7 +322,8 @@ body .mc-cycle {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 1200px;
+    max-width: 1900px;
+    width: 100%;
   }
 
   /* Remove the padding we set earlier */

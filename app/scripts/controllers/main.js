@@ -17,6 +17,7 @@ vtimelineApp.controller('MainCtrl', function ($scope, hitosRepository) {
          $scope.hitos = hitos.filter(function (i){
              return i.titulo!==null;
          });
+
      });
 
       $scope.addHito = function () {
@@ -39,14 +40,19 @@ vtimelineApp.factory('hitosRepository', function($http) {
   };
 });
 
-vtimelineApp.filter('fechaFormato', function($filter) {
+vtimelineApp.filter('fechaFormato', function(moment) {
   return function(input)
   {
     if(input === null){ return; }
 
-    var _date = $filter('date')(new Date(input), 'dd.MM.yyyy');
+    //var _date = $filter('date')(new Date(input), 'dd.MM.yyyy');
+    moment.locale('es', {
+      months: 'enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre'.split(' '),
+    });
+      var momentObj = moment(input, 'DD \d\e MMMM');
+    var momentString = momentObj.format('DD-MM'); // 2016-07-15
 
-    return _date;
+    return momentString;
 
   };
 });
