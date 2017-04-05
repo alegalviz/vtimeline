@@ -2,7 +2,7 @@
     <ul class="menu-filtros" >
         <li ng-repeat="hito in hitos | unique:'categoria'" ng-if="hito.categoria" class="{{hito.categoria}} btn">
           <img src="images/timeline/claves.png" />
-          <span ng-click="miFiltro={categoria: 'mundial'}" class="btn">{{hito.categoria}}</span>
+          <span ng-click="miFiltro={categoria: hito.categoria}" class="btn">{{hito.categoria}}</span>
         </li>
         <li class="todos btn" ng-click="miFiltro={}">
           <img src="images/timeline/todos.png" />
@@ -17,18 +17,17 @@
         <div>
             <ul class="hitos">
                 <li ng-repeat="hito in hitos |filter:miFiltro|filter:emptyFilter"
-                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-11">
+                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12">
                     <div  ng-model="hito" class="hito col-md-12">
-                        <div class="imagen col-md-4"
-                             style="background-image: url('{{hito.foto}}');"></div>
-                        <div class="titulo bold col-md-3">
+
+                        <div class="titulo bold col-md-5">
                             <div class="table140">
                                 <div class="cellcenter">
                                     {{hito.titulo}}
                                 </div>
                             </div>
                         </div>
-                        <div class="dia col-md-1">
+                        <div class="dia col-md-2">
                             <div class="table140">
                                 <div class="cellcenter">
                                     <span class="{{hito.categoria}}">{{hito.numero}}</span>
@@ -36,13 +35,16 @@
                             </div>
                         </div>
                         <div class="cuerpo col-md-5">
-                            <div class="table140">
-                                <div class="cellcenter">
-                                    <div class="fecha bold col-md-5">{{hito.fecha | fechaFormato}}</div>
-                                    <div class="descripcion col-md-12" ng-bind-html="hito.descripcion"></div>
-                                </div>
-                            </div>
+                          <div class="imagen col-sm-5" style="background-image: url('{{hito.foto}}');"></div>
+                          <div class="table140 col-sm-7">
+                              <div class="cellcenter">
+                                  <div class="fecha bold">{{hito.fecha | fechaFormato}}</div>
+                                  <div class="descripcion" ng-bind-html="hito.descripcion"></div>
+                              </div>
+                          </div>
+
                         </div>
+
                     </div>
                 </li>
             </ul>

@@ -107,8 +107,14 @@ body .mc-cycle {
   top: 0;
   width: 100%;
 }
-.table140 {display:table;height:180px;width: 100%;}
-.cellcenter {display:table-cell;vertical-align: middle;}
+.table140 {
+  display:table;
+  height:180px;
+}
+.cellcenter {
+  display:table-cell;
+  vertical-align: middle;
+}
 #timeline {
   margin-top: 2em;
 }
@@ -129,7 +135,7 @@ body .mc-cycle {
   margin-bottom: 1em;
 }
 #timeline .container .hito .imagen{
-  width: 140px;
+  /*width: 140px;*/
   height: 140px;
 }
 #timeline .container .hito .imagen{
@@ -137,7 +143,6 @@ body .mc-cycle {
   display: block;
   background-repeat:  no-repeat;
   background-position: center;
-  float: none;
 }
 #timeline .container .hito {
   font-family: "VAG Rounded Std Light";
@@ -145,6 +150,13 @@ body .mc-cycle {
 }
 #timeline .container .even .hito {
   flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+#timeline .container .even .dia .table140 {
+  float: right;
+}
+#timeline .container .odd .hito {
+  justify-content: flex-start;
 }
 .bold {
   font-family: "VAGRoundedStd-Bold";
@@ -227,7 +239,7 @@ body .mc-cycle {
 .even .cellcenter span:after {
   content: '';
   position: absolute;
-  bottom: -80%;
+  bottom: -88%;
   height: 80px;
   width: 3px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#adadad+0,000000+100&0.65+0,0+100 */
@@ -236,12 +248,12 @@ body .mc-cycle {
   background: linear-gradient(to bottom, rgba(173,173,173,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6adadad', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
   left: 0;
-  transform: rotateZ(45deg);
+  transform: rotateZ(30deg);
 }
 .odd .cellcenter span:after {
   content: '';
   position: absolute;
-  bottom: -80%;
+  bottom: -88%;
   height: 80px;
   width: 3px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#adadad+0,000000+100&0.65+0,0+100 */
@@ -250,12 +262,12 @@ body .mc-cycle {
   background: linear-gradient(to bottom, rgba(173,173,173,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6adadad', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
   left: 100%;
-  transform: rotateZ(-45deg);
+  transform: rotateZ(-30deg);
 }
 .even .cellcenter span:before {
   content: '';
   position: absolute;
-  top: -80%;
+  top: -88%;
   height: 80px;
   width: 3px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,adadad+100&0+0,0.65+100 */
@@ -264,12 +276,12 @@ body .mc-cycle {
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(173,173,173,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6adadad',GradientType=0 ); /* IE6-9 */
   left: 0;
-  transform: rotateZ(-45deg);
+  transform: rotateZ(-30deg);
 }
 .odd .cellcenter span:before {
   content: '';
   position: absolute;
-  top: -80%;
+  top: -88%;
   height: 80px;
   width: 3px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,adadad+100&0+0,0.65+100 */
@@ -278,7 +290,7 @@ body .mc-cycle {
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(173,173,173,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6adadad',GradientType=0 ); /* IE6-9 */
   left: 100%;
-  transform: rotateZ(45deg);
+  transform: rotateZ(30deg);
 }
 #timeline .dia span {
   padding: 25px;
