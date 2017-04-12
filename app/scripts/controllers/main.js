@@ -13,8 +13,8 @@ var vtimelineApp = angular.module('vtimelineApp');
 vtimelineApp.controller('MainCtrl', function ($scope, hitosRepository) {
 
 
-     hitosRepository.getAllHitos().success(function(hitos) {
-         $scope.hitos = hitos.filter(function (i){
+     hitosRepository.getAllHitos().then(function(hitos) {
+         $scope.hitos = hitos.data.filter(function (i){
              return i.titulo!==null;
          });
 
@@ -70,9 +70,16 @@ vtimelineApp.filter('emptyFilter', function() {
     };
 });
 
-/*vtimelineApp.filter('filtroPorMes', function ($filter) {
-  return function(input)
-  {
-
-  };
-});*/
+vtimelineApp.directive('lineConnection', function(){
+  return {
+    restrict: 'A',
+    link: function(scope, el){
+      $(el).connections();
+    }
+  }
+});
+$(document).ready(function() {
+  $('.circulos').connections();
+  var connections = $('connection, inner');
+  setInterval(function() { connections.connections('update') }, 100);
+});

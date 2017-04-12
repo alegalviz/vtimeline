@@ -1,13 +1,17 @@
 <div id="timeline" ng-if="hitos">
     <ul class="menu-filtros" >
-        <li ng-repeat="hito in hitos | unique:'categoria'" ng-if="hito.categoria" class="{{hito.categoria}} btn">
+        <!--<li ng-repeat="hito in hitos | unique:'categoria'" ng-if="hito.categoria" class="{{hito.categoria}} btn">
           <img src="images/timeline/claves.png" />
           <span ng-click="miFiltro={categoria: hito.categoria}" class="btn">{{hito.categoria}}</span>
         </li>
         <li class="todos btn" ng-click="miFiltro={}">
           <img src="images/timeline/todos.png" />
           <span>Todos</span>
-        </li>
+        </li>-->
+      <!--<li class="argentina btn">
+        <img src="images/timeline/claves.png" />
+        <span ng-click="miFiltro={categoria: 'argentina'}" class="btn">Argentina</span>
+      </li>-->
     </ul>
     <!--<ul class="meses">
       <li class="diciembre"><span ng-click="filtroPorMes(12)" class="btn">Diciembre</span></li>
@@ -30,7 +34,7 @@
                         <div class="dia col-md-2">
                             <div class="table140">
                                 <div class="cellcenter">
-                                    <span class="{{hito.categoria}}">{{hito.numero}}</span>
+                                    <span class="{{hito.categoria}} circulo" line-connection></span>
                                 </div>
                             </div>
                         </div>
