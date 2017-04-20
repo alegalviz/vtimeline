@@ -1,13 +1,13 @@
 <div id="timeline" ng-if="hitos">
     <ul class="menu-filtros" >
-        <!--<li ng-repeat="hito in hitos | unique:'categoria'" ng-if="hito.categoria" class="{{hito.categoria}} btn">
-          <img src="images/timeline/claves.png" />
-          <span ng-click="miFiltro={categoria: hito.categoria}" class="btn">{{hito.categoria}}</span>
+        <li ng-if="hito.categoria" class="{{hito.categoria}}">
+          <div class="{{hito.categoria}} circulo boton"></div>
+          <div ng-click="miFiltro={categoria: hito.categoria}" class="boton">{{hito.categoria}}</div>
         </li>
-        <li class="todos btn" ng-click="miFiltro={}">
-          <img src="images/timeline/todos.png" />
-          <span>Todos</span>
-        </li>-->
+        <li class="todos">
+          <div class="todos circulo boton"></div>
+          <div ng-click="miFiltro={}" class="boton">todos</div>
+        </li>
       <!--<li class="argentina btn">
         <img src="images/timeline/claves.png" />
         <span ng-click="miFiltro={categoria: 'argentina'}" class="btn">Argentina</span>
@@ -19,9 +19,10 @@
     </ul>-->
     <div class="container">
         <div>
-            <ul class="hitos">
+            <ul class="hitos" conectar-lineas>
+                <conecciones>
                 <li ng-repeat="hito in hitos |filter:miFiltro|filter:emptyFilter"
-                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12">
+                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12" on-repeat-done="repeat_done">
                     <div  ng-model="hito" class="hito col-md-12">
 
                         <div class="titulo bold col-md-5">
@@ -34,7 +35,7 @@
                         <div class="dia col-md-2">
                             <div class="table140">
                                 <div class="cellcenter">
-                                    <span class="{{hito.categoria}} circulo" line-connection></span>
+                                    <div class="{{hito.categoria}} circulo"></div>
                                 </div>
                             </div>
                         </div>
@@ -51,6 +52,7 @@
 
                     </div>
                 </li>
+                </conecciones>
             </ul>
         </div>
     </div>

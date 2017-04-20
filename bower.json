@@ -18,7 +18,7 @@
     "maximage": "https://github.com/alegalviz/maximage.git",
     "moment": "^2.18.1",
     "angular-moment": "^1.0.1",
-    "jquery-connections": "https://github.com/alegalviz/jquery-connections.git#gh-pages"
+    "jquery-connections": "https://github.com/alegalviz/jquery-connections.git#master"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
