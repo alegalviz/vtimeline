@@ -1,13 +1,22 @@
 <div id="timeline" ng-if="hitos">
     <ul class="menu-filtros" >
-        <li ng-if="hito.categoria" class="{{hito.categoria}}">
-          <div class="{{hito.categoria}} circulo boton"></div>
-          <div ng-click="miFiltro={categoria: hito.categoria}" class="boton">{{hito.categoria}}</div>
-        </li>
         <li class="todos">
-          <div class="todos circulo boton"></div>
+          <div ng-click="miFiltro={}" class="todos circulo boton"></div>
           <div ng-click="miFiltro={}" class="boton">todos</div>
         </li>
+        <li class="mundial">
+          <div ng-click="miFiltro={categoria: 'mundial'}" class="mundial circulo boton"></div>
+          <div ng-click="miFiltro={categoria: 'mundial'}" class="boton">Sistema Mundo</div>
+        </li>
+        <li  class="latinoamerica">
+          <div ng-click="miFiltro={categoria: 'latinoamerica'}" class="latinoamerica circulo boton"></div>
+          <div ng-click="miFiltro={categoria: 'latinoamerica'}" class="boton">Latinoamerica</div>
+        </li>
+        <li class="argentina">
+          <div ng-click="miFiltro={categoria: 'argentina'}" class="argentina circulo boton"></div>
+          <div ng-click="miFiltro={categoria: 'argentina'}" class="boton">Argentina</div>
+        </li>
+
       <!--<li class="argentina btn">
         <img src="images/timeline/claves.png" />
         <span ng-click="miFiltro={categoria: 'argentina'}" class="btn">Argentina</span>
@@ -19,10 +28,10 @@
     </ul>-->
     <div class="container">
         <div>
-            <ul class="hitos" conectar-lineas>
+            <ul class="hitos">
                 <conecciones>
                 <li ng-repeat="hito in hitos |filter:miFiltro|filter:emptyFilter"
-                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12" on-repeat-done="repeat_done">
+                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12" >
                     <div  ng-model="hito" class="hito col-md-12">
 
                         <div class="titulo bold col-md-5">

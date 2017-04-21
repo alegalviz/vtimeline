@@ -16,22 +16,21 @@ var vtimelineApp = angular.module('vtimelineApp')
 
 vtimelineApp.controller('MainCtrl', function ($scope, hitosRepository) {
 
-
-     hitosRepository.getAllHitos().then(function(hitos) {
-         $scope.hitos = hitos.data.filter(function (i){
-             return i.titulo!==null;
-         });
-
+  hitosRepository.getAllHitos().then(function(hitos) {
+     $scope.hitos = hitos.data.filter(function (i){
+         return i.titulo!==null;
      });
 
-      $scope.addHito = function () {
-        $scope.hitos.push($scope.hito);
-        $scope.hito = '';
-      };
-      $scope.removeHito = function (index) {
-        $scope.hitos.splice(index, 1);
-      };
-    });
+  });
+
+  $scope.addHito = function () {
+    $scope.hitos.push($scope.hito);
+    $scope.hito = '';
+  };
+  $scope.removeHito = function (index) {
+    $scope.hitos.splice(index, 1);
+  };
+});
 
 vtimelineApp.factory('hitosRepository', function($http) {
   return {

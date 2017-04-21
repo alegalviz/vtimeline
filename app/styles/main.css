@@ -127,8 +127,8 @@ body .mc-cycle {
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-#timeline .container .even .dia .table140 {
-  float: right;
+#timeline .container .dia .table140 {
+  margin: auto;
 }
 #timeline .container .odd .hito {
   justify-content: flex-start;
