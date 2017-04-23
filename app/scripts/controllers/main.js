@@ -18,7 +18,7 @@ vtimelineApp.controller('MainCtrl', function ($scope, hitosRepository) {
 
   hitosRepository.getAllHitos().then(function(hitos) {
      $scope.hitos = hitos.data.filter(function (i){
-         return i.titulo!==null;
+         return (i.titulo!=='' && i.fecha!=='');
      });
 
   });
@@ -71,70 +71,86 @@ vtimelineApp.filter('emptyFilter', function() {
         return filteredArray;
     };
 });
+vtimelineApp.directive('repeatConeccion', function() {
+  return function(scope) {
+    if (scope.$last){
+      scope.$emit('LastElem');
+    }
+    //scope.$watch('thing', function(){
+    //});
+  };
+});
+vtimelineApp.directive('conecciones', ['$timeout', function($timeout) {
+  return function(scope, element) {
+    scope.$on('LastElem', function(){
+        $timeout(function () {
+           angular.element(element).find('.circulo').connections({all:false});
+        });
+    });
+  };
+}]);
+// vtimelineApp.directive('conecciones', [
+  // '$timeout', 'connConfig', function ($timeout, connConfig) {
+    // return {
+      // scope: {
+        // options: '=',
+        // enabled: '@'
+      // },
+      // restrict: 'AE',
+      // link: function (scope, element) {
+      //  hide slider
+      //  angular.element(element).css('display', 'none');
 
-vtimelineApp.directive('conecciones', [
-  '$timeout', 'connConfig', function ($timeout, connConfig) {
-    return {
-      scope: {
-        options: '=',
-        enabled: '@'
-      },
-      restrict: 'AE',
-      link: function (scope, element) {
-        //hide slider
-        //angular.element(element).css('display', 'none');
+        // var options, initOptions, destroy, init, destroyAndInit;
 
-        var options, initOptions, destroy, init, destroyAndInit;
+        // initOptions = function () {
+          // options = angular.extend(angular.copy(connConfig),{
+            // enabled: scope.enabled !== 'false'
+          // }, scope.options);
 
-        initOptions = function () {
-          options = angular.extend(angular.copy(connConfig),{
-            enabled: scope.enabled !== 'false'
-          }, scope.options);
+        // };
 
-        };
+        // destroy = function () {};
 
-        destroy = function () {};
-
-        init = function () {
-          initOptions();
+        // init = function () {
+          // initOptions();
 
           
 
-          if (angular.element(element).hasClass('conn-initialized')) {
-            if (options.enabled) {
-              //return slickness.slick('getSlick');
-            } else {
-              destroy();
-            }
-          } else {
-            if (!options.enabled) {
-              return;
-            }
-            $timeout(function () {
-              var aconectar = angular.element(element);
-              aconectar.find('.circulo').connections({all:false});
-            });
-          }
-        };
+          // if (angular.element(element).hasClass('conn-initialized')) {
+            // if (options.enabled) {
+            //  return slickness.slick('getSlick');
+            // } else {
+              // destroy();
+            // }
+          // } else {
+            // if (!options.enabled) {
+              // return;
+            // }
+            // $timeout(function () {
+              // angular.element(element).find('.circulo').connections({all:false});
+            // });
+          // }
+        // };
 
-        destroyAndInit = function () {
-          destroy();
-          init();
-        };
+        // destroyAndInit = function () {
+          // destroy();
+          // init();
+        // };
 
-        element.one('$destroy', function () {
-          destroy();
-        });
+        // element.one('$destroy', function () {
+          // destroy();
+        // });
 
-        return scope.$watch('options', function (newVal) {
-          if (newVal !== null) {
-            return destroyAndInit();
-          }
-        }, true);
-      }
-    };
-  }
-]);
+        // return scope.$watch('options', function (newVal) {
+          // if (newVal !== null) {
+            // return destroyAndInit();
+          // }
+        // }, true);
+      // }
+    // };
+  // }
+//]);
 
 /*vtimelineApp.directive('conectarLineas', function() {
   return {

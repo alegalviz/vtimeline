@@ -18,7 +18,9 @@ angular
     'ngTouch',
     'duScroll',
     'angular.filter',
-    'angularMoment'
+    'angularMoment',
+    'afkl.lazyImage',
+    'anguvideo'
   ])
   .config(function ($routeProvider) {
     $routeProvider

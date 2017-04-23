@@ -28,30 +28,33 @@
     </ul>-->
     <div class="container">
         <div>
-            <ul class="hitos">
-                <conecciones>
-                <li ng-repeat="hito in hitos |filter:miFiltro|filter:emptyFilter"
-                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12" >
+            <ul class="hitos" conecciones>
+                <li ng-repeat="hito in hitos |filter:miFiltro|filter:empty-filter"
+                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12" repeat-coneccion>
                     <div  ng-model="hito" class="hito col-md-12">
 
-                        <div class="titulo bold col-md-5">
-                            <div class="table140">
-                                <div class="cellcenter">
+                        <div class="bold col-md-5">
+                            <div class="">
+                                <div class="anio">
+                                    {{hito.anio}}
+                                </div>
+                                <div class="titulo">
                                     {{hito.titulo}}
                                 </div>
                             </div>
                         </div>
                         <div class="dia col-md-2">
-                            <div class="table140">
-                                <div class="cellcenter">
+                            <div class="">
+                                <div class="">
                                     <div class="{{hito.categoria}} circulo"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="cuerpo col-md-5">
-                          <div class="imagen col-sm-5" style="background-image: url('{{hito.foto}}');"></div>
-                          <div class="table140 col-sm-7">
-                              <div class="cellcenter">
+                        <div class="cuerpo col-md-5" afkl-image-container>
+                          <div class="imagen col-sm-5" ng-if="hito.foto" afkl-lazy-image="{{hito.foto}}" afkl-lazy-image-options='{"background": true}'></div>
+                          <div class="imagen col-sm-5" ng-if="hito.video" anguvideo ng-model="hito.video" width="206" height="140"></div>
+                          <div class="col-sm-7">
+                              <div class="">
                                   <div class="fecha bold">{{hito.fecha | fechaFormato}}</div>
                                   <div class="descripcion" ng-bind-html="hito.descripcion"></div>
                               </div>
