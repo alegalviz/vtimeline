@@ -98,7 +98,7 @@ vtimelineApp.directive('conecciones', [
         init = function () {
           initOptions();
 
-          var aconectar = angular.element(element);
+          
 
           if (angular.element(element).hasClass('conn-initialized')) {
             if (options.enabled) {
@@ -111,7 +111,7 @@ vtimelineApp.directive('conecciones', [
               return;
             }
             $timeout(function () {
-              //angular.element(element).css('display', 'block');
+              var aconectar = angular.element(element);
               aconectar.find('.circulo').connections({all:false});
             });
           }
