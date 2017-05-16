@@ -25,6 +25,32 @@
     <![endif]-->
 
     <!-- Add your site or application content here-->
+
+    <div class="portada">
+      <a href="" id="arrow_left"><img src="images/rotador/arrow_left.png" alt="Slide Left" /></a>
+      <a href="" id="arrow_right"><img src="images/rotador/arrow_right.png" alt="Slide Right" /></a>
+      <img id="cycle-loader" src="images/rotador/ajax-loader.gif" />
+      <div id="maximage">
+        <div class="first-item">
+          <img src="images/rotador/wall_portrait.jpg" alt="" />
+          <img id="gradient" src="images/rotador/gradient.png" alt="" />
+          <div class="speech">
+            <p>Se puede poner HTML en el slider</p>
+            <p><a href="/blog" target="_blank" style="font-weight:bold">Ir al blog >></a></p>
+          </div>
+        </div>
+        <img src="images/rotador/coalesse.jpg" alt="Coalesse" data-href="http://www.google.com/" />
+        <img src="images/rotador/laughing.jpg" alt="" />
+        <div class="video">
+          <img src="images/rotador/pattern.jpg" alt="" />
+          <iframe width="100%" height="100%" src="http://www.youtube.com/embed/Ddekkw-H_8g?wmode=opaque" frameborder="0" class="youtube-video" allowfullscreen></iframe>
+        </div>
+        <img src="images/rotador/roof_shooting.jpg" alt="" />
+        <img src="images/rotador/man.jpg" alt="" />
+        <img src="images/rotador/coffee_shop.jpg" alt="" />
+        <img src="images/rotador/gas_station.jpg" alt="" />
+      </div>
+    </div>
     <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -40,13 +66,20 @@
         <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
           <ul class="nav navbar-nav">
-            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="#descripcion">Descripción</a></li>
+            <li><a href="#timeline">L&iacute;nea de tiempo</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="libro.pdf">Libro</a></li>
+            <li><a href="#creditos">Cr&eacute;ditos</a></li>
           </ul>
         </div>
       </div>
     </div>
-
-    <div class="container">
+    <div id="descripcion">
+      <iframe width="853" height="480" src="https://www.youtube.com/embed/PCaNcSckouo" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="timeline" class="container">
       <div ng-view=""></div>
     </div>
 

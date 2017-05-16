@@ -29,34 +29,35 @@
     <div class="container">
         <div>
             <ul class="hitos" conecciones>
-                <li ng-repeat="hito in hitos |filter:miFiltro|filter:empty-filter"
+                <li ng-repeat="hito in hitos |filter:miFiltro"
                     ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12" repeat-coneccion>
-                    <div  ng-model="hito" class="hito col-md-12">
-
-                        <div class="bold col-md-5">
+                    <div  ng-model="hito" id="{{hito.id}}" class="hito col-md-12">
+                        <div class="bold bloque1">
                             <div class="">
                                 <div class="anio">
                                     {{hito.anio}}
+                                    <div class="fecha bold">{{hito.fecha | fechaFormato}}</div>
                                 </div>
+
                                 <div class="titulo">
                                     {{hito.titulo}}
                                 </div>
                             </div>
                         </div>
-                        <div class="dia col-md-2">
+                        <div class="dia bloquecentro">
                             <div class="">
                                 <div class="">
                                     <div class="{{hito.categoria}} circulo"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="cuerpo col-md-5" afkl-image-container>
-                          <div class="imagen col-sm-5" ng-if="hito.foto" afkl-lazy-image="{{hito.foto}}" afkl-lazy-image-options='{"background": true}'></div>
+                        <div class="cuerpo bloque2" afkl-image-container>
+                          <div class="imagen col-sm-5" ng-if="hito.foto" afkl-lazy-image="{{hito.foto}}"></div>
                           <div class="imagen col-sm-5" ng-if="hito.video" anguvideo ng-model="hito.video" width="206" height="140"></div>
                           <div class="col-sm-7">
                               <div class="">
-                                  <div class="fecha bold">{{hito.fecha | fechaFormato}}</div>
                                   <div class="descripcion" ng-bind-html="hito.descripcion"></div>
+                                  <div ng-if="hito.continua" class="continuaen"><a ng-click="continuar(hito.continua)">Continua con esta historia</a></div>
                               </div>
                           </div>
 

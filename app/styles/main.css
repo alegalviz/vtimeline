@@ -25,8 +25,26 @@ body {
   color: #dddddd;
 }
 .navbar-default {
-  background-color: rgba(5,4,4,0.7);
-  border-color: #000;
+  background-color: #cc043e;
+  border-color: transparent;
+  border-radius: 0;
+  border: 0;
+  margin-top: -50px;
+  z-index: 10;
+}
+#js-navbar-collapse {
+  font-size: 1.3em;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-around;
+  float: initial;
+  margin-bottom: 0;
+
+}
+.navbar-nav li {
+  float: initial;
 }
 /************************
 
@@ -73,15 +91,6 @@ body {
   margin: 30px 0;
 }
 
-
-body .mc-cycle {
-  height: 100%;
-  left: 0;
-  overflow: hidden;
-  position: relative;
-  top: 0;
-  width: 100%;
-}
 .table140 {
   display:table;
   height:180px;
@@ -98,7 +107,7 @@ body .mc-cycle {
   margin-top:1em;
 }
 #timeline .hitos li {
-  list-style: none;  
+  list-style: none;
   min-height: 180px;
   margin-bottom: 3em;
 }
@@ -109,19 +118,23 @@ body .mc-cycle {
   padding: 0;
 }
 #timeline .container .hito .imagen{
-  /*width: 140px;*/
-  height: 140px;
+  width: 186px;
+  /* height: 140px; */
 }
 #timeline .container .hito .imagen{
   background-size: cover;
   display: block;
   background-repeat:  no-repeat;
   background-position: center;
+  padding: 0;
+}
+.imagen img {
+  max-width: 100%;
 }
 #timeline .container .hito {
   display: flex;
 }
-#timeline .container .even .hito {
+#timeline .container .odd .hito {
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
@@ -133,18 +146,24 @@ body .mc-cycle {
 }
 
 .odd .anio {
-    position: absolute;
-    /* margin-left: 100px; */
-    right: -65px;
-    font-size: 35px;
-    color: #ababab;
+  position: relative;
+  margin-left: 25px;
+  right: 12px;
+  font-size: 35px;
+  color: #ababab;
+  text-align: left;
+  float: left;
+  width: 150px;
 }
 .even .anio {
-    position: absolute;
-    /* margin-left: 100px; */
-    left: -65px;
-    font-size: 35px;
-    color: #ababab;
+  position: relative;
+  /* margin-left: 100px; */
+  right: 12px;
+  font-size: 35px;
+  color: #ababab;
+  text-align: right;
+  float: right;
+  width: 146px;
 }
 
 
@@ -202,14 +221,39 @@ body .mc-cycle {
   padding-top:5px;
   white-space: normal;
 }
-#timeline .titulo {
-  /* text-align: right; */
-  font-size: 26px;
+.menu-filtros {
+  text-align: center;
+  margin-bottom: 10em;
+}
+
+.cuerpo {
+  padding-left: 5em;
+}
+
+.cuerpo .col-sm-7 {
+  padding: 0px 7px;
+}
+#timeline .odd .titulo {
+  text-align: left;
+  font-size: 31px;
   /* padding-left: 40px; */
   /* float: none; */
-  width: 80%;
+  width: 50%;
   margin: auto;
-  padding-top: 2em;
+  padding-top: 0px;
+  float: left;
+  padding-right: 30px;
+}
+#timeline .even .titulo {
+  text-align: right;
+  font-size: 31px;
+  /* padding-left: 40px; */
+  /* float: none; */
+  width: 71%;
+  margin: auto;
+  padding-top: 0px;
+  float: right;
+  padding-right: 30px;
 }
 #timeline .dia {
   font-size: 16px;
@@ -243,53 +287,176 @@ connection.first {
   color: black;
   border: 5px dotted;
 }
-inner {
-  border: 4px solid;
-  border-radius: 16px;
-  color: #668;
-}
 
 .circulo {
-  width: 50px;
-  height: 50px;
-  padding: 2px;
+  width: 20px;
+  height: 20px;
+  padding: 8px;
   border-radius: 50%;
-  background-clip: content-box;
+  background-clip: padding-box;
   margin: 0 auto;
   color: white;
   display: block;
 }
 .circulo.mundial {
-  background-color: #3c7bdd;
-  border: 2px solid #3c7bdd;
+  background-color: rgb(60, 123, 221);
+  border: 12px solid rgba(60, 123, 221, 0.5);
 }
 .circulo.latinoamerica {
   background-color: #dd6373;
-  border: 2px solid #dd6373;
+  border: 12px solid rgba(221, 99, 115, 0.5);
 }
 .circulo.argentina {
   background-color: #a4dd7a;
-  border: 2px solid #a4dd7a;
+  border: 12px solid rgba(164, 221, 122, 0.5);
 }
 .circulo.todos {
   background-color: #dd7552;
-  border: 2px solid #dd7552;
+  border: 12px solid rgba(221, 117, 82, 0.5);
 }
 #timeline .descripcion {
   color: #949597;
-  font-size: 12px;
+  font-size: 15px;
+  padding-left: 4px;
+}
+#timeline .even {
+  text-align: left;
+}
+#timeline .odd {
+  text-align: right;
 }
 #timeline .fecha {
-  color: #C7C7C7;
-  font-size: 18px;
+  color: #191919;
+  font-size: 19px;
+  margin-top: -6px;
+  font-family: sans-serif;
 }
 .boton {
   cursor: pointer;
 }
 
+/*rotador*/
+/* I wanted to center my loader */
+#cycle-loader {
+  height:32px;
+  left:50%;
+  margin:-8px 0 0 -8px;
+  position:absolute;
+  top:50%;
+  width:32px;
+  z-index:999;
+}
+
+
+.portada {
+  position: relative;
+}
+body .mc-cycle {
+  position: static !important;
+}
+
+#arrow_left, #arrow_right {
+  bottom: 5em;
+  height:67px;
+  position:absolute;
+  right:30px;
+  width:36px;
+  z-index:1000;
+}
+#arrow_left {
+  right:86px;
+}
+
+#arrow_left:hover, #arrow_right:hover {
+  bottom:4.95em;
+}
+#arrow_left:active, #arrow_right:active {
+  bottom:4.9em;
+}
+.in-slide-content {
+  color:#333;
+  float:right;
+  font-family:'Helvetica Neue', helvetica;
+  font-size:20px;
+  font-weight:bold;
+  right:0;
+  margin:40px;
+  padding:20px;
+  position:absolute;
+  top:0;
+  width:700px;
+  z-index:9999; /* Show above .gradient */
+  -webkit-font-smoothing:antialiased;
+}
+.light-text {color:#ddd;}
+.smaller-text {font-size:30px;}
+.youtube-video, video {
+  left:0;
+  position:absolute;
+  top:0;
+}
+.speech {
+  background-color:#fff;
+  border:solid 2px #000;
+  border-radius:12px;
+  display:inline-block;
+  margin:.5em;
+  padding:.5em 1em;
+  position:absolute;
+  z-index:9999; /* Show above .gradient */
+  -webkit-font-smoothing:antialiased;
+  top: 0;
+  right:0;
+  width:700px;
+  float:right;
+  font-size:2em;
+}
+
+.speech:before {
+  border:solid 12px transparent;
+  border-left:solid 12px #000;
+  border-top:solid 12px #000;
+  bottom:-24px;
+  content:"";
+  height:0;
+  left:24px;
+  position:absolute;
+  transform:skew(-15deg);
+  width:0;
+}
+
+.speech:after {
+  border:solid 10px transparent;
+  border-left:solid 10px #fff;
+  border-top:solid 10px #fff;
+  bottom:-19px;
+  content:"";
+  height:0;
+  left:27px;
+  position:absolute;
+  transform:skew(-15deg);
+  width:0;
+}
+
+
+#descripcion {
+  margin-top: 2em;
+  text-align: center;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+
+  .bloque1,.bloque2 {
+    width: 48%;
+    position: relative;
+    float: left;
+  }
+  .bloquecentro {
+    width: 4%;
+    position: relative;
+    float: left;
+  }
   .container {
     max-width: 1900px;
     width: 100%;
@@ -310,4 +477,5 @@ inner {
   .jumbotron {
     border-bottom: 0;
   }
+
 }
