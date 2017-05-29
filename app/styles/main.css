@@ -8,32 +8,70 @@
 
 body {
   padding: 0;
-  font-family:'Roboto', sans-serif;
+  font-family:'Lato', sans-serif;
 }
 
+/*****************/
+/****  portada  **/
+/*****************/
+.portada {
+  background: url("../images/sitio/tierra.jpg") no-repeat;
+  background-size: cover;
+  min-height:100vh;
+}
+#canvas {
+  background: transparent;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#logo {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+  pointer-events: none
+}
+.marcas .container {
+  background: rgba(255,255,255,0.6);
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+.marcas {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+}
 /**** menu superior ****/
 .navbar {
   margin: 0;
 }
 .navbar-default .navbar-nav li a {
-  color: #ffffff;
+  color: black;
+  transition: 0.1s linear all;
 }
 .navbar-default .navbar-nav li a:hover,
 .navbar-default .navbar-nav li a:active,
 .navbar-default .navbar-nav li a:visited,
 .navbar-default .navbar-nav li a:focus {
-  color: #dddddd;
+  color: #000000;
 }
 .navbar-default {
-  background-color: #cc043e;
+  background-color: white;
   border-color: transparent;
   border-radius: 0;
   border: 0;
-  margin-top: -50px;
+  margin-top: -75px;
   z-index: 10;
+  /* position: fixed; */
+  width: 100%;
 }
 #js-navbar-collapse {
-  font-size: 1.3em;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 .navbar-nav {
@@ -46,20 +84,131 @@ body {
 .navbar-nav li {
   float: initial;
 }
+
+.navbar .nav a:after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  display: block;
+  margin: auto;
+  background-clip: padding-box;
+  border-radius: 50%;
+  padding: 3px;
+  margin-top: 7px;
+  transition: 0.1s linear all;
+}
+.navbar .nav a:hover:after {
+  margin-top: 3px;
+}
+.navbar .nav a {
+  text-align: center;
+}
+.navbar .nav .btninicio:after {
+  background-color: #F7DB13;
+  border: 7px solid rgba(247, 219, 19, 0.7);
+}
+.navbar .nav .btndescripcion:after {
+  background-color: #EC790F;
+  border: 7px solid rgba(236, 121, 15, 0.7);
+}
+.navbar .nav .btnlinea:after {
+  background-color: #D9101D;
+  border: 7px solid  rgba(217, 16, 29, 0.7);
+}
+.navbar .nav .btnblog:after {
+  background-color: #742C64;
+  border: 7px solid rgba(116, 44, 100, 0.7);
+}
+.navbar .nav .btnlibro:after {
+  background-color: #174D9B;
+  border: 7px solid rgba(23, 77, 155, 0.7);
+}
+.navbar .nav .btncreditos:after {
+  background-color: #0B8938;
+  border: 7px solid rgba(11, 137, 56, 0.7);
+}
+
+.navbar-default .navbar-nav li .btninicio:hover {
+  color: #FFCC00;
+}
+.navbar-default .navbar-nav li .btndescripcion:hover,
+.navbar-default .navbar-nav li .btndescripcion.nav-active {
+  color: #FF6600;
+}
+.navbar-default .navbar-nav li .btnlinea:hover,
+.navbar-default .navbar-nav li .btnlinea.nav-active {
+  color: #CC0033;
+}
+.navbar-default .navbar-nav li .btnblog:hover,
+.navbar-default .navbar-nav li .btnblog.nav-active {
+  color: #663366;
+}
+.navbar-default .navbar-nav li .btnlibro:hover,
+.navbar-default .navbar-nav li .btnlibro.nav-active {
+  color: #006699;
+}
+.navbar-default .navbar-nav li .btncreditos:hover,
+.navbar-default .navbar-nav li .btncreditos.nav-active {
+  color: #009933;
+}
+#menu.stuck {
+  position: fixed;
+  top: 0;
+  margin-top: 0;
+}
+#filtros.stuck {
+  position: fixed;
+  top: 0;
+  margin-top: 0;
+}
+.stuck #js-navbar-collapse {
+  font-size: 18px;
+}
+.stuck #js-navbar-collapse a {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.hitos:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 /************************
 
 /*************************/
 /***  filtros  **********/
 
 .menu-filtros li {
-  display: inline-block;
+  /* display: inline-block; */
   color: #B5B5B5;
 }
 .menu-filtros img {
   width: 30px;
   height: auto;
 }
-/* Everything but the jumbotron gets side spacing for mobile first views */
+.menu-filtros .circulo {
+  box-shadow: none;
+  width: 64px;
+  height: 64px;
+  border-radius: initial;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.menu-filtros .circulo.mundial {
+  background-image: url("../images/timeline/mundo.png");
+}
+.menu-filtros .circulo.latinoamerica {
+  background-image: url("../images/timeline/america.png");
+}
+.menu-filtros .circulo.argentina {
+  background-image: url("../images/timeline/arg.png");
+}
+.menu-filtros .circulo.todos {
+  background-image: url("../images/timeline/todo.png");
+}
+
+
 .header,
 .marketing,
 .footer {
@@ -67,25 +216,7 @@ body {
   padding-right: 15px;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
 
 .container-narrow > hr {
   margin: 30px 0;
@@ -104,14 +235,16 @@ body {
 }
 
 #timeline .hitos {
-  margin-top:1em;
+  margin-top: 8em;
 }
 #timeline .hitos li {
   list-style: none;
   min-height: 180px;
-  margin-bottom: 3em;
+  margin-bottom: 10em;
 }
-
+#timeline a {
+  cursor: pointer;
+}
 #timeline .container {
   /*height: 480px;*/
   overflow: auto;
@@ -119,14 +252,17 @@ body {
 }
 #timeline .container .hito .imagen{
   width: 186px;
-  /* height: 140px; */
+  height: 100%;
 }
 #timeline .container .hito .imagen{
-  background-size: cover;
+  background-size: contain;
   display: block;
   background-repeat:  no-repeat;
-  background-position: center;
+  background-position: top center;
   padding: 0;
+}
+#timeline .container .even .imagen{
+  float: right;
 }
 .imagen img {
   max-width: 100%;
@@ -212,8 +348,10 @@ body {
 }
 .menu-filtros li {
   text-align: center;
-  width: 100px;
+  width: 120px;
   vertical-align: top;
+  margin: 0 20px;
+  list-style: none;
 }
 .menu-filtros li span {
   width:100%;
@@ -223,13 +361,33 @@ body {
 }
 .menu-filtros {
   text-align: center;
-  margin-bottom: 10em;
+  /* margin-bottom: 10em; */
+  display: flex;
+  justify-content: center;
 }
-
-.cuerpo {
+#filtros .nombrefiltro {
+  color: black;
+  font-size: 17px;
+  padding: 0 10px;
+}
+.volanta {
+  font-size: 14px;
+}
+.mundial .volanta {
+  color: #0B8938
+}
+.latinoamerica .volanta {
+  color: #EC790F
+}
+.argentina .volanta {
+  color: #174D9B
+}
+.even .cuerpo {
   padding-left: 5em;
 }
-
+.odd .cuerpo {
+  padding-right: 3em;
+}
 .cuerpo .col-sm-7 {
   padding: 0px 7px;
 }
@@ -238,9 +396,9 @@ body {
   font-size: 31px;
   /* padding-left: 40px; */
   /* float: none; */
-  width: 50%;
+  width: 60%;
   margin: auto;
-  padding-top: 0px;
+  padding-top: 10px;
   float: left;
   padding-right: 30px;
 }
@@ -251,7 +409,7 @@ body {
   /* float: none; */
   width: 71%;
   margin: auto;
-  padding-top: 0px;
+  padding-top: 10px;
   float: right;
   padding-right: 30px;
 }
@@ -289,30 +447,28 @@ connection.first {
 }
 
 .circulo {
-  width: 20px;
-  height: 20px;
-  padding: 8px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
   border-radius: 50%;
-  background-clip: padding-box;
   margin: 0 auto;
-  color: white;
-  display: block;
+  margin-top: 16px;
 }
-.circulo.mundial {
-  background-color: rgb(60, 123, 221);
-  border: 12px solid rgba(60, 123, 221, 0.5);
+.hitos .circulo.mundial {
+  background-color: #0B8938;
+  box-shadow: 0 0 0 12px rgba(11, 137, 56, 0.7);
 }
-.circulo.latinoamerica {
-  background-color: #dd6373;
-  border: 12px solid rgba(221, 99, 115, 0.5);
+.hitos .circulo.latinoamerica {
+  background-color: #EC790F;
+  box-shadow: 0 0 0 12px rgba(236, 121, 15, 0.7);
 }
-.circulo.argentina {
-  background-color: #a4dd7a;
-  border: 12px solid rgba(164, 221, 122, 0.5);
+.hitos .circulo.argentina {
+  background-color: #174D9B;
+  box-shadow: 0 0 0 12px rgba(23, 77, 155, 0.7);
 }
-.circulo.todos {
+.hitos .circulo.todos {
   background-color: #dd7552;
-  border: 12px solid rgba(221, 117, 82, 0.5);
+  box-shadow: 0 0 0 12px rgba(221, 117, 82, 0.5);
 }
 #timeline .descripcion {
   color: #949597;
@@ -330,6 +486,52 @@ connection.first {
   font-size: 19px;
   margin-top: -6px;
   font-family: sans-serif;
+}
+/*flechitas*/
+.cuerpo.bloque2 {
+  position: relative;
+}
+.even .cuerpo.bloque2:before {
+  position: absolute;
+  content:"";
+  width:0px;
+  height:0px;
+  border-top: 20px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 15px solid transparent;
+  top: 5px;
+  left: 40px;
+}
+.odd .cuerpo.bloque2:before {
+  position: absolute;
+  content:"";
+  width:0px;
+  height:0px;
+  border-top: 20px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 15px solid transparent;
+  top: 5px;
+  right: 40px;
+}
+.even .mundial .cuerpo.bloque2:before {
+  border-right-color: #0b8938;
+}
+.odd .mundial .cuerpo.bloque2:before {
+  border-left-color: #0b8938;
+}
+.even .argentina .cuerpo.bloque2:before {
+  border-right-color: #174d9b;
+}
+.odd .argentina .cuerpo.bloque2:before {
+  border-left-color: #174d9b;
+}
+.even .latinoamerica .cuerpo.bloque2:before {
+  border-right-color: #EC790F;
+}
+.odd .latinoamerica .cuerpo.bloque2:before {
+  border-left-color: #EC790F;
 }
 .boton {
   cursor: pointer;
@@ -440,8 +642,40 @@ body .mc-cycle {
 
 
 #descripcion {
-  margin-top: 2em;
+  margin-top: -2em;
   text-align: center;
+  margin-bottom: 4em;
+  line-height: 170%;
+  font-size: 21px;
+  font-weight: 300;
+  background: white;
+  position: relative;
+  padding-top: 4em;
+}
+
+#video {
+  background: rgba(236, 121, 15, 0.7);
+  padding: 6em 0;
+}
+
+.contenedortierra {
+  position: absolute;
+  z-index: -1;
+  width: 940px;
+  left: -120px;
+  height: 159%;
+  top: -75px;
+}
+
+.tierra {
+  position: absolute;
+  left: 0;
+}
+
+.tierra2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -458,7 +692,7 @@ body .mc-cycle {
     float: left;
   }
   .container {
-    max-width: 1900px;
+    /* max-width: 1900px; */
     width: 100%;
   }
 
@@ -477,5 +711,10 @@ body .mc-cycle {
   .jumbotron {
     border-bottom: 0;
   }
-
+  .contenedor {
+    width: 750px;
+    margin: auto;
+    text-align: justify;
+    position: relative;
+  }
 }
