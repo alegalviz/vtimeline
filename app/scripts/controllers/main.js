@@ -33,8 +33,26 @@ vtimelineApp.controller('MainCtrl', function ($scope, hitosRepository, anchorDes
   $scope.continuar = function (eID){
     // call $anchorScroll()
     anchorDesplazarSuave.scrollTo(eID);
-
   };
+
+  $scope.categoriaseleccionada = '';
+  $scope.setCategoria = function(cat) {
+    $scope.categoriaseleccionada = cat;
+  };
+  $scope.etiquetaseleccionada = '';
+  $scope.setEtiqueta = function(cat) {
+    $scope.etiquetaseleccionada = cat;
+  };
+
+  $scope.actualizarlineas = function() {
+    $('.hitos').find('.circulo').connections({all:false});
+    $('.connection').addClass('loaded');
+  };
+  $scope.unirhitos = function () {
+    angular.element('.hitos').find('.circulo').connections('remove');
+    setTimeout($scope.actualizarlineas, 800);
+  };
+
 });
 
 vtimelineApp.factory('hitosRepository', function($http) {
@@ -66,6 +84,51 @@ vtimelineApp.filter('fechaFormato', function(moment) {
   };
 });
 
+vtimelineApp.filter('formatoEtiquetas', function() {
+  return function(input)
+  {
+    var listado;
+    listado = input.split(',').map(function(item) {
+      return item.trim().toLowerCase();
+    });
+    return listado;
+  };
+});
+
+vtimelineApp.filter('filtrarCategorias', function(){
+  return function(values, categoria) {
+
+    if(!categoria) {
+      // initially don't filter
+      return values;
+    }
+
+    return values.filter(function(value){
+      if (value.categoria.toLowerCase().indexOf(categoria) !== -1) {
+        return true;
+      }
+      return false;
+    });
+  };
+});
+vtimelineApp.filter('filtrarEtiquetas', function(){
+  return function(values, etiqueta) {
+
+    if(!etiqueta) {
+      // initially don't filter
+      return values;
+    }
+
+    return values.filter(function(value){
+
+      if (value.Etiquetas.toLowerCase().indexOf(etiqueta) !== -1) {
+        return true;
+      }
+      return false;
+    });
+  };
+});
+
 vtimelineApp.filter('emptyFilter', function() {
     return function(array) {
         var filteredArray = [];
@@ -77,24 +140,17 @@ vtimelineApp.filter('emptyFilter', function() {
         return filteredArray;
     };
 });
-vtimelineApp.directive('repeatConeccion', function() {
-  return function(scope) {
-    if (scope.$last){
-      scope.$emit('LastElem');
+
+vtimelineApp.directive('onFinishRender', function($timeout) {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attr) {
+      if (scope.$last) setTimeout(function () {
+        scope.$emit('onRepeatLast', element, attr);
+      }, 1);
     }
-    //scope.$watch('thing', function(){
-    //});
   };
 });
-vtimelineApp.directive('conecciones', ['$timeout', function($timeout) {
-  return function(scope, element) {
-    scope.$on('LastElem', function(){
-        $timeout(function () {
-           angular.element(element).find('.circulo').connections({all:false});
-        });
-    });
-  };
-}]);
 
 vtimelineApp.service('anchorDesplazarSuave', function(){
 
@@ -116,7 +172,7 @@ vtimelineApp.service('anchorDesplazarSuave', function(){
 
     function elmYPosition(eID) {
       var elm = document.getElementById(eID);
-      var y = elm.offsetTop;
+      var y = elm.offsetTop - 65;
       var node = elm;
       while (node.offsetParent && node.offsetParent !== document.body) {
         node = node.offsetParent;
@@ -153,68 +209,69 @@ vtimelineApp.service('anchorDesplazarSuave', function(){
 });
 
 
-// vtimelineApp.directive('conecciones', [
-  // '$timeout', 'connConfig', function ($timeout, connConfig) {
-    // return {
-      // scope: {
-        // options: '=',
-        // enabled: '@'
-      // },
-      // restrict: 'AE',
-      // link: function (scope, element) {
-      //  hide slider
-      //  angular.element(element).css('display', 'none');
+vtimelineApp.directive('conecciones', [
+  '$timeout', 'connConfig', function ($timeout, connConfig) {
+    return {
+      scope: {
+        options: '=',
+        enabled: '@'
+      },
+      restrict: 'AE',
+      link: function (scope, element, attr) {
+       // escondo las conecciones
+       angular.element(element).css('display', 'none');
 
-        // var options, initOptions, destroy, init, destroyAndInit;
+        var options, initOptions, destroy, init, destroyAndInit;
 
-        // initOptions = function () {
-          // options = angular.extend(angular.copy(connConfig),{
-            // enabled: scope.enabled !== 'false'
-          // }, scope.options);
+        initOptions = function () {
+          options = angular.extend(angular.copy(connConfig),{
+            enabled: scope.enabled !== 'false'
+          }, scope.options);
 
-        // };
+        };
 
-        // destroy = function () {};
+        destroy = function () {
+          angular.element(element).find('.circulo').connections('remove');
+        };
 
-        // init = function () {
-          // initOptions();
+        init = function () {
+          initOptions();
+          if (angular.element(element).hasClass('conn-initialized')) {
+            if (options.enabled) {
+              angular.element(element).find('.circulo').connections('update');
+            } else {
+              destroy();
+            }
+          } else {
+            if (!options.enabled) {
+              return;
+            }
+            $timeout(function () {
+              angular.element(element).css('display', 'block');
+              angular.element(element).find('.circulo').connections({all:false});
+              $('.connection').addClass('loaded');
+            });
+          }
+        };
 
+        destroyAndInit = function () {
+          destroy();
+          init();
+        };
 
+        element.one('$destroy', function () {
+          destroy();
+        });
 
-          // if (angular.element(element).hasClass('conn-initialized')) {
-            // if (options.enabled) {
-            //  return slickness.slick('getSlick');
-            // } else {
-              // destroy();
-            // }
-          // } else {
-            // if (!options.enabled) {
-              // return;
-            // }
-            // $timeout(function () {
-              // angular.element(element).find('.circulo').connections({all:false});
-            // });
-          // }
-        // };
-
-        // destroyAndInit = function () {
-          // destroy();
-          // init();
-        // };
-
-        // element.one('$destroy', function () {
-          // destroy();
-        // });
-
-        // return scope.$watch('options', function (newVal) {
-          // if (newVal !== null) {
-            // return destroyAndInit();
-          // }
-        // }, true);
-      // }
-    // };
-  // }
-//]);
+        return scope.$watch('options', function (newVal) {
+          if (newVal !== null) {
+            return destroyAndInit();
+          }
+        }, true);
+      }
+    };
+  }
+]);
 
 /*vtimelineApp.directive('conectarLineas', function() {
   return {

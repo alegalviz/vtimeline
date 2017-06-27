@@ -10,7 +10,13 @@ body {
   padding: 0;
   font-family:'Lato', sans-serif;
 }
-
+connection {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+.loaded {
+  opacity: 1;
+}
 /*****************/
 /****  portada  **/
 /*****************/
@@ -72,6 +78,7 @@ body {
 #js-navbar-collapse {
   font-size: 24px;
   font-weight: 300;
+  overflow: visible;
 }
 
 .navbar-nav {
@@ -163,6 +170,7 @@ body {
 }
 .stuck #js-navbar-collapse {
   font-size: 18px;
+  /* overflow: visible; */
 }
 .stuck #js-navbar-collapse a {
   padding-bottom: 5px;
@@ -306,6 +314,9 @@ body {
 .bold {
   font-weight: bold;
 }
+
+
+
 /*animacion*/
 .los-hitos-animation.ng-enter,
 .los-hitos-animation.ng-leave,
@@ -315,28 +326,22 @@ body {
 }
 
 .los-hitos-animation.even.ng-enter {
-  left:-10px;
   opacity:0;
 }
 .los-hitos-animation.odd.ng-enter {
-  left:10px;
   opacity:0;
 }
 .los-hitos-animation.ng-enter.ng-enter-active {
-  left:0;
   opacity:1;
 }
 
 .los-hitos-animation.ng-leave {
-  left:0;
   opacity:1;
 }
 .los-hitos-animation.ng-leave.even.ng-leave-active {
-  left:-10px;
   opacity:0;
 }
 .los-hitos-animation.ng-leave.odd.ng-leave-active {
-  left:10px;
   opacity:0;
 }
 
@@ -373,13 +378,22 @@ body {
 .volanta {
   font-size: 14px;
 }
-.mundial .volanta {
+.cadavolanta:after {
+  content: ',\00a0';
+}
+.cadavolanta:last-child:after {
+  content: '';
+}
+.cadavolanta {
+  text-transform: capitalize;
+}
+.mundial .volanta a {
   color: #0B8938
 }
-.latinoamerica .volanta {
+.latinoamerica .volanta a {
   color: #EC790F
 }
-.argentina .volanta {
+.argentina .volanta a {
   color: #174D9B
 }
 .even .cuerpo {
@@ -487,6 +501,22 @@ connection.first {
   margin-top: -6px;
   font-family: sans-serif;
 }
+
+#timeline .container .hito .video {
+  width: 186px;
+  height: 100%;
+  padding: 0;
+}
+#timeline .container .even .video {
+  float: right;
+}
+#timeline .container .odd .video {
+  float: left;
+}
+iframe.videoClass {
+  max-width: 100%;
+}
+
 /*flechitas*/
 .cuerpo.bloque2 {
   position: relative;
@@ -677,6 +707,9 @@ body .mc-cycle {
   right: 0;
   bottom: 0;
 }
+#marcasenmobile {
+  display: none;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -717,4 +750,147 @@ body .mc-cycle {
     text-align: justify;
     position: relative;
   }
+}
+
+@media screen and (max-width: 768px) {
+
+  #marcasenmobile {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 3em;
+  }
+  .bloquecentro {
+    order: 1;
+  }
+  .bloque1 {
+    order: 2;
+  }
+  .bloque2 {
+    order: 3;
+  }
+  #timeline ul {
+    padding-left: 0;
+  }
+  #timeline .container .hito {
+    display: block;
+  }
+  #timeline .dia {
+    text-align: left;
+    position: absolute;
+    left: 0;
+    top: 30px;
+  }
+
+  .hito .circulo {
+    margin: 0;
+  }
+  #timeline .titulo {
+    padding-left: 25px;
+  }
+  #timeline .anio,
+  .odd .anio {
+    padding-left: 25px;
+    float: none;
+    width: 100%;
+    text-align: left;
+    right: 0;
+    margin: 0;
+  }
+  #timeline .titulo,
+  #timeline .even .titulo,
+  #timeline .odd .titulo {
+    text-align: left;
+    width: 100%;
+    float: none;
+  }
+  #timeline .cuerpo {
+    padding-left: 15px;
+    text-align: left;
+  }
+  #timeline  .cuerpo.bloque2:before {
+    content: none;
+  }
+  #timeline .container .even .imagen,
+  #timeline .container .odd .imagen {
+    min-height: 300px;
+    margin-left: 15px;
+    float: right;
+  }
+  #timeline .container .hito .video {
+    margin-left: 15px;
+  }
+  #logo img {
+    width: 350px;
+  }
+  .contenedortierra {
+    display: none;
+  }
+  #video iframe {
+    width: 100%;
+  }
+  .odd .cuerpo {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #timeline .container .even .imagen,
+  #timeline .container .odd .imagen {
+    min-height: 300px;
+    width: 100%;
+    margin-left: 0;
+    float: none;
+    background-size: cover;
+    margin: 10px
+  }
+  #timeline .container .hito .video {
+    margin-left: 0;
+    min-height: 300px;
+    width: 100%;
+    float: none;
+  }
+  iframe.videoClass {
+    width: 100%;
+    min-height: 300px;
+  }
+  #timeline .even .titulo,
+  #timeline .odd .titulo {
+    font-size: 25px;
+  }
+  #timeline .hitos li {
+    margin-bottom: 5em;
+  }
+  .navbar-nav {
+    display: block;
+  }
+  .navbar .nav a {
+    text-align: right;
+    padding-right: 16px;
+  }
+  .navbar .nav a:after {
+    margin: 0;
+    float: right;
+    /* position: absolute; */
+    /* right: 15px; */
+    /* top: 12px; */
+    margin-left: 5px;
+  }
+  .marcas .container {
+    padding: 0;
+  }
+  .marcas .container .marca {
+    display: none;
+  }
+  #logo img {
+    width: 280px;
+  }
+  .menu-filtros {
+    flex-wrap: wrap;
+  }
+  .menu-filtros li {
+    width: 100px;
+    margin: 0;
+  }
+
 }

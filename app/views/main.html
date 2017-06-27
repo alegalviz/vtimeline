@@ -1,36 +1,38 @@
 <div id="timeline" ng-if="hitos">
     <ul id="filtros" class="menu-filtros" >
       <li class="argentina">
-        <div ng-click="miFiltro={categoria: 'argentina'}" class="argentina circulo boton"></div>
-        <div ng-click="miFiltro={categoria: 'argentina'}" class="boton nombrefiltro">Argentina</div>
+        <div ng-click="setCategoria('argentina');setEtiqueta('');unirhitos()" class="argentina circulo boton"></div>
+        <div ng-click="setCategoria('argentina');setEtiqueta('');unirhitos()" class="boton nombrefiltro">Argentina</div>
       </li>
       <li  class="latinoamerica">
-        <div ng-click="miFiltro={categoria: 'latinoamerica'}" class="latinoamerica circulo boton"></div>
-        <div ng-click="miFiltro={categoria: 'latinoamerica'}" class="boton nombrefiltro">Am&eacute;rica Latina</div>
+        <div ng-click="setCategoria('latinoamerica');setEtiqueta('');unirhitos()" class="latinoamerica circulo boton"></div>
+        <div ng-click="setCategoria('latinoamerica');setEtiqueta('');unirhitos()" class="boton nombrefiltro">Am&eacute;rica Latina</div>
       </li>
       <li class="mundial">
-        <div ng-click="miFiltro={categoria: 'mundial'}" class="mundial circulo boton"></div>
-        <div ng-click="miFiltro={categoria: 'mundial'}" class="boton nombrefiltro">Sistema Mundo</div>
+        <div ng-click="setCategoria('mundial');setEtiqueta('');unirhitos()" class="mundial circulo boton"></div>
+        <div ng-click="setCategoria('mundial');setEtiqueta('');unirhitos()" class="boton nombrefiltro">Sistema Mundo</div>
       </li>
       <li class="todos">
-        <div ng-click="miFiltro={}" class="todos circulo boton"></div>
-        <div ng-click="miFiltro={}" class="boton nombrefiltro">Todos</div>
+        <div ng-click="setCategoria('');setEtiqueta('');unirhitos()" class="todos circulo boton"></div>
+        <div ng-click="setCategoria('');setEtiqueta('');unirhitos()" class="boton nombrefiltro">Todos</div>
       </li>
 
       <!--<li class="argentina btn">
         <img src="images/timeline/claves.png" />
-        <span ng-click="miFiltro={categoria: 'argentina'}" class="btn">Argentina</span>
+        <span ng-click="filtroHitos={categoria: 'argentina'}" class="btn">Argentina</span>
       </li>-->
     </ul>
     <!--<ul class="meses">
       <li class="diciembre"><span ng-click="filtroPorMes(12)" class="btn">Diciembre</span></li>
       <li class="enero"><span ng-click="filtroPorMes(1)" class="btn">Enero</span></li>
     </ul>-->
+    <!--<div class="filtroactual">Filtrando por: {{categoriaseleccionada}} {{etiquetaseleccionada}}</div>-->
     <div class="container">
         <div>
-            <ul class="hitos" conecciones>
-                <li ng-repeat="hito in hitos |filter:miFiltro"
-                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12" repeat-coneccion>
+          <conecciones>
+            <ul class="hitos" >
+                <li ng-repeat="hito in hitos |filtrarCategorias:categoriaseleccionada | filtrarEtiquetas:etiquetaseleccionada"
+                    ng-class="$even ? 'even' : 'odd'" class="los-hitos-animation col-md-12">
                     <div  ng-model="hito" id="{{hito.id}}" class="hito col-md-12 {{hito.categoria}}">
                         <div class="bold bloque1">
                             <div class="">
@@ -38,11 +40,11 @@
                                     {{hito.anio}}
                                     <div class="fecha bold">{{hito.fecha | fechaFormato}}</div>
                                 </div>
-
-
                                 <div class="titulo">
                                   <div class="volanta">
-                                    {{hito.Etiquetas}}
+                                    <span class="cadavolanta" ng-repeat="etiqueta in hito.Etiquetas | formatoEtiquetas">
+                                      <a ng-click="setEtiqueta(etiqueta); setCategoria(''); continuar('timeline'); unirhitos()" class="">{{etiqueta}}</a>
+                                    </span>
                                   </div>
                                     {{hito.titulo}}
                                 </div>
@@ -69,8 +71,8 @@
 
                     </div>
                 </li>
-                </conecciones>
             </ul>
+          </conecciones>
         </div>
     </div>
 </div>
