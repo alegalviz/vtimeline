@@ -710,7 +710,61 @@ body .mc-cycle {
 #marcasenmobile {
   display: none;
 }
+#video {
+  display: none;
+}
 
+#creditos {
+  background: #198f43;
+  color: white;
+  padding: 1em;
+  position: relative;
+  font-weight:300;
+}
+#creditos .fondocreditos {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("../images/sitio/tierra.jpg");
+  width: 100%;
+  height: 100%;
+  opacity : 0.2;
+}
+#creditos .bloque:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+#creditos ul {
+  padding: 18px;
+  font-size: 1.2em;
+}
+
+
+#creditos h2 {
+  margin-bottom: 2em;
+  /* font-weight: 300; */
+}
+
+#creditos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#creditos li {
+  padding-left: 10px;
+  text-indent: -.7em;
+}
+
+#creditos li::before {
+  content: "• ";
+  color: #53ac73;
+}
+.centro {
+  text-align: center;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
 
@@ -749,6 +803,27 @@ body .mc-cycle {
     margin: auto;
     text-align: justify;
     position: relative;
+  }
+  #creditos {
+    padding: 3em;
+  }
+  #creditos .col-sm-12 {
+    padding: 0;
+  }
+  #creditos .bloque {
+    font-size: 0.9em;
+    padding: 30px;
+    padding-left: 5em;
+    text-align: left;
+    padding-top: 0;
+    margin-top: 3em;
+  }
+  #creditos .bloque1 {
+    padding-left: 0;
+    margin-right: 15px;
+  }
+  #creditos .bloque2 {
+    border-left: 1px solid #fff;
   }
 }
 
