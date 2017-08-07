@@ -759,7 +759,7 @@ body .mc-cycle {
 }
 
 #creditos li::before {
-  content: "• ";
+  content: "\2022 ";
   color: #53ac73;
 }
 .centro {
