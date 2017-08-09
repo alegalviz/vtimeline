@@ -26,7 +26,7 @@
       <li class="diciembre"><span ng-click="filtroPorMes(12)" class="btn">Diciembre</span></li>
       <li class="enero"><span ng-click="filtroPorMes(1)" class="btn">Enero</span></li>
     </ul>-->
-    <!--<div class="filtroactual">Filtrando por: {{categoriaseleccionada}} {{etiquetaseleccionada}}</div>-->
+    <div class="filtroactual" ng-if="categoriaseleccionada || etiquetaseleccionada">Filtraste por: <span title="Eliminar filtro" ng-click="setCategoria('');setEtiqueta('');unirhitos()" class="tag2 filtro">{{categoriaseleccionada}} {{etiquetaseleccionada}}</span></div>
     <div class="container">
         <div>
           <conecciones>
